@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "eslint-config-prettier": "^6.11.0",
+    "petfinder-client": "^1.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
