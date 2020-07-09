@@ -18,8 +18,8 @@ class Search extends React.Component {
         this.setState(
             {
             animal: event.target.value
-            }
-            this.getBreeds
+            },
+            this.getBreeds()
         );
     };
 
