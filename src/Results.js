@@ -2,6 +2,7 @@ import React from "react";
 import pf from "petfinder-client";
 import Pet from "./Pet";
 import SearchBox from "./SearchBox";
+import { Consumer } from "./SearchContext";
 
 const petfinder = pf({
     key: process.env.API_KEY,
@@ -17,28 +18,36 @@ class Results extends React.Component {
         };
       }
     componentDidMount() {
+        this.search();
+    }
+    search = () => {
     petfinder.pet
-        .find({ location: "Austin, TX", output: "full" })
+        .find({ 
+            location: this.props.searchParams.location,
+            animal: this.props.searchParams.animal,
+            breed: this.props.searchParams.breed,
+            output: "full"
+        })
         .then(data => {
-        let pets;
-        if (data.petfinder.pets && data.petfinder.pets.pet) {
-            if(Array.isArray(data.petfinder.pets.pet)) {
-            pets = data.petfinder.pets.pet;
+            let pets;
+            if (data.petfinder.pets && data.petfinder.pets.pet) {
+                if(Array.isArray(data.petfinder.pets.pet)) {
+                pets = data.petfinder.pets.pet;
+                } else {
+                pets = [data.petfinder.pets.pet];
+                } 
             } else {
-            pets = [data.petfinder.pets.pet];
-            } 
-        } else {
-            pets = []
-        }
-        this.setState({
-            pets
-        });
+                pets = []
+            }
+            this.setState({
+                pets: pets
+            });
         });
     }
     render() {
         return (
             <div className="search">
-                <SearchBox />
+                <SearchBox search={this.search} />
             {this.state.pets.map(pet => {
                 let breed;
                 if (Array.isArray(pet.breeds.breed)) {
@@ -63,4 +72,10 @@ class Results extends React.Component {
     }
 }
 
-export default Results;
+export default function ResultsWithContext(props) {
+    return (
+        <Consumer>
+            {context => <Results {...props} searchParams={context} />}
+        </Consumer>
+    );
+}
