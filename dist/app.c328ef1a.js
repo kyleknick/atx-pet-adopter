@@ -52016,7 +52016,7 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
           active = _this$state.active;
       var hero = "http://placecorgi.com/300/300";
 
-      if (photos[active] && photos[active.value]) {
+      if (photos[active] && photos[active].value) {
         hero = photos[active].value;
       }
 
@@ -52151,6 +52151,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _petfinderClient = _interopRequireDefault(require("petfinder-client"));
 
+var _router = require("@reach/router");
+
 var _Carousel = _interopRequireDefault(require("./Carousel"));
 
 var _Modal = _interopRequireDefault(require("./Modal"));
@@ -52236,20 +52238,19 @@ var Details = /*#__PURE__*/function (_React$Component) {
           breed: breed,
           loading: false
         });
-      }).catch(function (err) {
-        return _this2.setState({
-          error: err
-        });
+      }).catch(function () {
+        (0, _router.navigate)("/");
       });
     }
   }, {
     key: "render",
     value: function render() {
       if (this.state.loading) {
-        return _react.default.createElement("h1", null, "loading ... ");
+        return _react.default.createElement("h1", null, "loading \u2026 ");
       }
 
       var _this$state = this.state,
+          media = _this$state.media,
           animal = _this$state.animal,
           breed = _this$state.breed,
           location = _this$state.location,
@@ -52258,11 +52259,11 @@ var Details = /*#__PURE__*/function (_React$Component) {
           showModal = _this$state.showModal;
       return _react.default.createElement("div", {
         className: "details"
-      }, _react.default.createElement("div", null, _react.default.createElement(_Carousel.default, {
+      }, _react.default.createElement(_Carousel.default, {
         media: media
-      }), _react.default.createElement("h1", null, name), _react.default.createElement("h2", null, "".concat(animal, " - ").concat(breed, " - ").concat(location)), _react.default.createElement("button", {
+      }), _react.default.createElement("div", null, _react.default.createElement("h1", null, name), _react.default.createElement("h2", null, "".concat(animal, " \u2014 ").concat(breed, " \u2014 ").concat(location)), _react.default.createElement("button", {
         onClick: this.toggleModal
-      }, "Adopt ", name), ";", _react.default.createElement("p", null, description), showModal ? _react.default.createElement(_Modal.default, null, _react.default.createElement("h1", null, "Would you like to adopt ", name, "?"), _react.default.createElement("div", {
+      }, "Adopt ", name), _react.default.createElement("p", null, description), showModal ? _react.default.createElement(_Modal.default, null, _react.default.createElement("h1", null, "Would you like to adopt ", name, "?"), _react.default.createElement("div", {
         className: "buttons"
       }, _react.default.createElement("button", {
         onClick: this.toggleModal
@@ -52277,7 +52278,7 @@ var Details = /*#__PURE__*/function (_React$Component) {
 
 var _default = Details;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","./Carousel":"Carousel.js","./Modal":"Modal.js"}],"SearchParams.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./Carousel":"Carousel.js","./Modal":"Modal.js"}],"SearchParams.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52356,15 +52357,15 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _router = require("@reach/router");
 
+var _petfinderClient = _interopRequireDefault(require("petfinder-client"));
+
 var _Results = _interopRequireDefault(require("./Results"));
 
 var _Details = _interopRequireDefault(require("./Details"));
 
 var _SearchParams = _interopRequireDefault(require("./SearchParams"));
 
-var _petfinderClient = _interopRequireDefault(require("petfinder-client"));
-
-var _SearchContext = require("/SearchContext");
+var _SearchContext = require("./SearchContext");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52430,7 +52431,7 @@ var App = /*#__PURE__*/function (_React$Component) {
       animal: "",
       breed: "",
       breeds: [],
-      handleAnimalChange: _this.handleAnimalCHange,
+      handleAnimalChange: _this.handleAnimalChange,
       handleBreedChange: _this.handleBreedChange,
       handleLocationChange: _this.handleLocationChange,
       getBreeds: _this.getBreeds
@@ -52473,7 +52474,7 @@ var App = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("span", {
         "aria-label": "search",
         role: "img"
-      }, "S"))), _react.default.createElement(_SearchContext.Provider, {
+      }, "\uD83D\uDD0D"))), _react.default.createElement(_SearchContext.Provider, {
         value: this.state
       }, _react.default.createElement(_router.Router, null, _react.default.createElement(_Results.default, {
         path: "/"
@@ -52488,8 +52489,8 @@ var App = /*#__PURE__*/function (_React$Component) {
   return App;
 }(_react.default.Component);
 
-_reactDom.default.render(_react.default.createElement(App, null), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./Results":"Results.js","./Details":"Details.js","./SearchParams":"SearchParams.js","petfinder-client":"../node_modules/petfinder-client/index.js","/SearchContext":"SearchContext.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render(_react.default.createElement(App, null), document.getElementById("root"));
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","petfinder-client":"../node_modules/petfinder-client/index.js","./Results":"Results.js","./Details":"Details.js","./SearchParams":"SearchParams.js","./SearchContext":"SearchContext.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -52517,7 +52518,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54281" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54060" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

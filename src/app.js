@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
+import pf from "petfinder-client";
 import Results from "./Results";
 import Details from "./Details";
 import SearchParams from "./SearchParams";
-import pf from "petfinder-client";
-import { Provider } from "/SearchContext";
+import { Provider } from "./SearchContext";
 
 const petfinder = pf({
   key: process.env.API_KEY,
@@ -21,7 +21,7 @@ class App extends React.Component {
       animal: "",
       breed: "",
       breeds: [],
-      handleAnimalChange: this.handleAnimalCHange,
+      handleAnimalChange: this.handleAnimalChange,
       handleBreedChange: this.handleBreedChange,
       handleLocationChange: this.handleLocationChange,
       getBreeds: this.getBreeds
@@ -76,7 +76,7 @@ class App extends React.Component {
           <Link to="/">Adopt Me!</Link>
           <Link to="/search-params">
             <span aria-label="search" role="img">
-              S
+              🔍
             </span>
           </Link>
         </header>
@@ -92,4 +92,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
