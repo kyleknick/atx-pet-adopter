@@ -17,17 +17,18 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "eslint": "^7.2.0",
+    "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.0",
-    "prettier": "^2.0.5"
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "prettier": "^2.1.1"
   },
   "dependencies": {
     "@reach/router": "^1.3.4",
     "eslint-config-prettier": "^6.11.0",
+    "lodash": "^4.17.20",
     "petfinder-client": "^1.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
